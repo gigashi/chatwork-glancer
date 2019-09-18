@@ -1,9 +1,13 @@
 package xyz.gigashi.chatworkglancer
 
+import android.app.AlertDialog
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.provider.Settings
 import android.widget.TextView
 import android.widget.Toast
+import androidx.core.app.NotificationManagerCompat
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
@@ -39,5 +43,17 @@ class MainActivity : AppCompatActivity() {
                 }
             )
         } }
+
+        // 他アプリの通知を見る権限を確認
+        if (!NotificationManagerCompat.getEnabledListenerPackages(this).contains(packageName)) {
+            AlertDialog.Builder(this)
+                .setTitle("need permission")
+                .setMessage("allow access to notifications")
+                .setPositiveButton("ok"){ _, _ ->
+                    Intent(Settings.ACTION_NOTIFICATION_LISTENER_SETTINGS).apply {
+                        startActivity(this)
+                    }
+                }.show()
+        }
     }
 }
