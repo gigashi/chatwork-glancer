@@ -10,3 +10,10 @@ AndroidのChatworkアプリは、通知にメッセージ内容が表示され�
 1. APIが正しければ自分のアカウント情報が表示される
 1. Chatworkアプリにメッセージ通知が来るたびにこのアプリがメッセージ内容を通知に表示する
 
+## Develop Environment
+
+```bash
+cat "/Applications/Android Studio.app/Contents/Info.plist" | grep "Android Studio" | grep "build"
+    <string>Android Studio 3.5, build AI-191.8026.42.35.6010548. Copyright JetBrains s.r.o., (c) 2000-2019</string>
+```
+
